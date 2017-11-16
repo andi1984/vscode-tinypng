@@ -7,15 +7,11 @@
   "engines": {
     "vscode": "^1.18.0"
   },
-  "categories": [
-    "Other"
-  ],
-  "activationEvents": [
-    "onCommand:extension.compressFile"
-  ],
+  "categories": ["Other"],
+  "activationEvents": ["onCommand:extension.compressFile", "onCommand:extension.compressFolder"],
   "main": "./extension",
   "contributes": {
-    "configuration":[
+    "configuration": [
       {
         "title": "TinyPNG Configuration",
         "properties": {
@@ -30,6 +26,10 @@
       {
         "command": "extension.compressFile",
         "title": "Compress Image"
+      },
+      {
+        "command": "extension.compressFolder",
+        "title": "Compress images inside folder"
       }
     ],
     "menus": {
@@ -38,17 +38,18 @@
           "when": "resourceLangId == tinypng_file",
           "command": "extension.compressFile",
           "group": "1_modification"
+        },
+        {
+          "when": "explorerResourceIsFolder",
+          "command": "extension.compressFolder",
+          "group": "1_modification"
         }
       ]
     },
     "languages": [
       {
         "id": "tinypng_file",
-        "extensions": [
-          ".png",
-          ".jpg",
-          ".jpeg"
-        ]
+        "extensions": [".png", ".jpg", ".jpeg"]
       }
     ]
   },
