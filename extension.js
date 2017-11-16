@@ -21,22 +21,28 @@ function activate(context) {
       return tinify.fromFile(file.path).toFile(file.path, error => {
         if (error) {
           if (error instanceof tinify.AccountError) {
-            vscode.window.showInformationMessage(
-              "The error message is: " + error.message
+            vscode.window.showErrorMessage(
+              "Authentification failed. Have you set the API Key?"
             );
             // Verify your API key and account limit.
           } else if (error instanceof tinify.ClientError) {
             // Check your source image and request options.
-            vscode.window.showInformationMessage();
+            vscode.window.showErrorMessage(
+              "Ooops, there is an error. Please check your source image and settings."
+            );
           } else if (error instanceof tinify.ServerError) {
             // Temporary issue with the Tinify API.
-            vscode.window.showInformationMessage();
+            vscode.window.showErrorMessage(
+              "TinyPNG API is currently not available."
+            );
           } else if (error instanceof tinify.ConnectionError) {
             // A network connection error occurred.
-            vscode.window.showInformationMessage();
+            vscode.window.showErrorMessage(
+              "Network issue occurred. Please check your internet connectivity."
+            );
           } else {
             // Something else went wrong, unrelated to the Tinify API.
-            vscode.window.showInformationMessage("Something went wrong");
+            vscode.window.showErrorMessage(error.message);
           }
         } else {
           vscode.window.showInformationMessage(
