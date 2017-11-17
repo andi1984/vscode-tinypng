@@ -87,9 +87,6 @@ function activate(context) {
     );
   });
 
-  // The command has been defined in the package.json file
-  // Now provide the implementation of the command with  registerCommand
-  // The commandId parameter must match the command field in package.json
   let disposableCompressFile = vscode.commands.registerCommand(
     "extension.compressFile",
     compressImage
