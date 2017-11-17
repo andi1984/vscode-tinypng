@@ -57,11 +57,35 @@ const compressImage = file => {
   });
 };
 
+/**
+ * Validate the user.
+ * @param {function} onSuccess - Function to call on success
+ * @param {function} onFailure - Function to call on failure
+ */
+const validate = (onSuccess = () => {}, onFailure = () => {}) =>
+  tinify.validate(function(err) {
+    if (err) {
+      onFailure(err);
+    } else {
+      onSuccess();
+    }
+  });
+
+const afterValidation = callback => validate(callback);
+
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
 function activate(context) {
   // Get API Key
   tinify.key = vscode.workspace.getConfiguration("tinypng").get("apiKey");
+
+  // Validate user
+  validate(console.log("Validation successfull!"), e => {
+    console.error(e.message);
+    vscode.window.showInformationMessage(
+      "TinyPNG: API validation failed. Be sure that you filled out tinypng.apiKey setting already."
+    );
+  });
 
   // The command has been defined in the package.json file
   // Now provide the implementation of the command with  registerCommand
@@ -85,6 +109,17 @@ function activate(context) {
   );
 
   context.subscriptions.push(disposableCompressFolder);
+
+  let disposableCompressionCount = vscode.commands.registerCommand(
+    "extension.getCompressionCount",
+    () =>
+      afterValidation(() =>
+        vscode.window.showInformationMessage(
+          `TinyPNG: You already used ${tinify.compressionCount} compression(s) this month.`
+        )
+      )
+  );
+  context.subscriptions.push(disposableCompressionCount);
 }
 exports.activate = activate;
 

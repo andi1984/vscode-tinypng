@@ -8,7 +8,11 @@
     "vscode": "^1.18.0"
   },
   "categories": ["Other"],
-  "activationEvents": ["onCommand:extension.compressFile", "onCommand:extension.compressFolder"],
+  "activationEvents": [
+    "onCommand:extension.compressFile",
+    "onCommand:extension.compressFolder",
+    "onCommand:extension.getCompressionCount"
+  ],
   "main": "./extension",
   "contributes": {
     "configuration": [
@@ -25,11 +29,15 @@
     "commands": [
       {
         "command": "extension.compressFile",
-        "title": "Compress Image"
+        "title": "TinyPNG: Compress"
       },
       {
         "command": "extension.compressFolder",
-        "title": "Compress images inside folder"
+        "title": "TinyPNG: Compress images in here"
+      },
+      {
+        "command": "extension.getCompressionCount",
+        "title": "TinyPNG: Compression Count"
       }
     ],
     "menus": {
