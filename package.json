@@ -90,5 +90,14 @@
   },
   "dependencies": {
     "tinify": "^1.5.0"
-  }
+  },
+  "bugs": {
+    "url": "https://github.com/andi1984/vscode-tinypng/issues",
+    "email": "andreas.sander@hotmail.de"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/andi1984/vscode-tinypng.git"
+  },
+  "homepage": "https://github.com/andi1984/vscode-tinypng/blob/master/README.md"
 }
