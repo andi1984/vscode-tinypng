@@ -22,7 +22,7 @@ Select a folder and press the corresponding TinyPNG context menu entry.
 
 You need to have an active TinyPNG API key, which you can find in your [TinyPNG Developer Dashboard](https://tinypng.com/dashboard/developers). You can provide the API key in your settings, see below.
 
-_!!!Be aware of [TinyPNG API](https://tinypng.com/developers)'s pricing model! All compressions you do via this extension are counting in your account's compression count! You can see your currently and monthly compression count via command you can see below!!!_
+_!!!Be aware of [TinyPNG API](https://tinypng.com/developers)'s pricing model! All compressions you do via this extension are counting in your account's compression count! You can see your currently and monthly compression count via command you can see below or inside the dashboard!!!_
 
 ![Compression Count command](images/compression-count.png)
 
