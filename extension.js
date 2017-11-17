@@ -2,13 +2,12 @@
 // Import the module and reference it with the alias vscode in your code below
 const vscode = require("vscode");
 const tinify = require("tinify");
-const fs = require("fs");
 
 /**
  * Function to compress a single image.
  * @param {Object} file 
  */
-const compressImage = (file) => {
+const compressImage = file => {
   const statusBarItem = vscode.window.createStatusBarItem(
     vscode.StatusBarAlignment.Left
   );
@@ -18,27 +17,36 @@ const compressImage = (file) => {
     statusBarItem.hide();
     if (error) {
       if (error instanceof tinify.AccountError) {
+        // Verify your API key and account limit.
+        console.error("Authentification failed. Have you set the API Key?");
         vscode.window.showErrorMessage(
           "Authentification failed. Have you set the API Key?"
         );
-        // Verify your API key and account limit.
       } else if (error instanceof tinify.ClientError) {
         // Check your source image and request options.
+        console.error(
+          "Ooops, there is an error. Please check your source image and settings."
+        );
         vscode.window.showErrorMessage(
           "Ooops, there is an error. Please check your source image and settings."
         );
       } else if (error instanceof tinify.ServerError) {
         // Temporary issue with the Tinify API.
+        console.error("TinyPNG API is currently not available.");
         vscode.window.showErrorMessage(
           "TinyPNG API is currently not available."
         );
       } else if (error instanceof tinify.ConnectionError) {
         // A network connection error occurred.
+        console.error(
+          "Network issue occurred. Please check your internet connectivity."
+        );
         vscode.window.showErrorMessage(
           "Network issue occurred. Please check your internet connectivity."
         );
       } else {
         // Something else went wrong, unrelated to the Tinify API.
+        console.error(error.message);
         vscode.window.showErrorMessage(error.message);
       }
     } else {
@@ -52,9 +60,6 @@ const compressImage = (file) => {
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
 function activate(context) {
-  // Use the console to output diagnostic information (console.log) and errors (console.error)
-  // This line of code will only be executed once when your extension is activated
-
   // Get API Key
   tinify.key = vscode.workspace.getConfiguration("tinypng").get("apiKey");
 
@@ -70,14 +75,12 @@ function activate(context) {
 
   let disposableCompressFolder = vscode.commands.registerCommand(
     "extension.compressFolder",
-    function (folder) {
-      // TODO: Find a VSCode API alternative to that...
-      let dirContent = fs.readdirSync(folder.path);
-      let files = dirContent.filter(file => file.match(/.*\.(png|jpg|jpeg)/gi));
-      return files.forEach(fileName => {
-        const path = `${folder.path}/${fileName}`;
-        return compressImage({path});
-      });
+    function(folder) {
+      vscode.workspace
+        .findFiles(
+          new vscode.RelativePattern(folder.path, `**/*.{png,jpg,jpeg}`)
+        )
+        .then(files => files.forEach(compressImage));
     }
   );
 
