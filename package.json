@@ -29,18 +29,34 @@
     "commands": [
       {
         "command": "extension.compressFile",
-        "title": "TinyPNG: Compress"
+        "title": "Compress",
+        "category": "TinyPNG"
       },
       {
         "command": "extension.compressFolder",
-        "title": "TinyPNG: Compress images in here"
+        "title": "Compress images in here",
+        "category": "TinyPNG"
       },
       {
         "command": "extension.getCompressionCount",
-        "title": "TinyPNG: Compression Count"
+        "title": "Compression Count",
+        "category": "TinyPNG"
       }
     ],
     "menus": {
+      "commandPalette": [
+        {
+          "command": "extension.getCompressionCount"
+        },
+        {
+          "command": "extension.compressFile",
+          "when": "False"
+        },
+        {
+          "command": "extension.compressFolder",
+          "when": "False"
+        }
+      ],
       "explorer/context": [
         {
           "when": "resourceLangId == tinypng_file",
