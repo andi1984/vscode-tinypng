@@ -99,5 +99,14 @@
     "type": "git",
     "url": "https://github.com/andi1984/vscode-tinypng.git"
   },
+  "badges": [
+    {
+      "url":
+        "https://api.codeclimate.com/v1/badges/22bab9e7a8e1660326b1/maintainability",
+      "href":
+        "https://codeclimate.com/github/andi1984/vscode-tinypng/maintainability",
+      "description": "Maintainability"
+    }
+  ],
   "homepage": "https://github.com/andi1984/vscode-tinypng/blob/master/README.md"
 }
