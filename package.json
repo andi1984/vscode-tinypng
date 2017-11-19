@@ -29,12 +29,12 @@
     "commands": [
       {
         "command": "extension.compressFile",
-        "title": "Compress",
+        "title": "TinyPNG: Compress",
         "category": "TinyPNG"
       },
       {
         "command": "extension.compressFolder",
-        "title": "Compress images in here",
+        "title": "TinyPNG: Compress images in here",
         "category": "TinyPNG"
       },
       {
