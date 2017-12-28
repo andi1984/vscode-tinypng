@@ -110,6 +110,11 @@
             "url": "https://api.codeclimate.com/v1/badges/22bab9e7a8e1660326b1/maintainability",
             "href": "https://codeclimate.com/github/andi1984/vscode-tinypng/maintainability",
             "description": "Maintainability"
+        },
+        {
+            "url": "https://david-dm.org/andi1984/vscode-tinypng/status.png",
+            "href": "https://david-dm.org/andi1984/vscode-tinypng",
+            "description": "Dependencies"
         }
     ],
     "homepage": "https://github.com/andi1984/vscode-tinypng/blob/master/README.md"
