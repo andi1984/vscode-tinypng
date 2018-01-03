@@ -44,9 +44,9 @@ _Note: This extension uses the TinyPNG own NodeJS [Tinify API client](https://gi
 
 ## Release Notes
 
-### 0.1.1, 0.1.2, 0.1.3
+### 0.1.1, 0.1.2, 0.1.3, 0.1.4
 
-Sync package.json version with marketplace version.
+Sync package.json version with marketplace version (_sorry!_).
 
 ### 0.1.0
 
