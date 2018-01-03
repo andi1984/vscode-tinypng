@@ -44,6 +44,18 @@ _Note: This extension uses the TinyPNG own NodeJS [Tinify API client](https://gi
 
 ## Release Notes
 
+### 0.1.1
+
+Sync package.json version with marketplace version.
+
+### 0.1.0
+
+Published version on marketplace.
+
+### 0.0.2
+
+Add dependency badge
+
 ### 0.0.1
 
 Initial release containing compression of single images and complete folders.
