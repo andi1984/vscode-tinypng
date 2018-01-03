@@ -11,9 +11,9 @@ const compressImage = file => {
   const statusBarItem = vscode.window.createStatusBarItem(
     vscode.StatusBarAlignment.Left
   );
-  statusBarItem.text = `Compressing file ${file.path}...`;
+  statusBarItem.text = `Compressing file ${file.fsPath}...`;
   statusBarItem.show();
-  return tinify.fromFile(file.path).toFile(file.path, error => {
+  return tinify.fromFile(file.fsPath).toFile(file.fsPath, error => {
     statusBarItem.hide();
     if (error) {
       if (error instanceof tinify.AccountError) {
@@ -51,7 +51,7 @@ const compressImage = file => {
       }
     } else {
       vscode.window.showInformationMessage(
-        `Image ${file.path} successfully compressed!`
+        `Image ${file.fsPath} successfully compressed!`
       );
     }
   });
