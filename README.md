@@ -2,6 +2,10 @@
 
 This extensions uses the API provided by[TinyPNG](https://tinypng.com/developers) to compress your JP(E)G and PNG images directly inside VSCode!
 
+![Installs](https://badgen.net/vs-marketplace/i/andi1984.tinypng)
+![Downloads](https://badgen.net/vs-marketplace/d/andi1984.tinypng)
+![Version](https://badgen.net/vs-marketplace/v/andi1984.tinypng)
+
 ## Features
 
 ### Compression of single files
