@@ -30,15 +30,15 @@ _!!!Be aware of [TinyPNG API](https://tinypng.com/developers)'s pricing model! A
 
 This extension contributes the following settings:
 
-* `tinypng.apiKey`: Your own TinyPNG API Key
+-   `tinypng.apiKey`: Your own TinyPNG API Key
 
 ## Known Issues/Limitations
 
 Currently not supported API features are:
 
-* Image resizing
-* Preserving metadata
-* Saving compressed images to Amazon S3.
+-   Image resizing
+-   Preserving metadata
+-   Saving compressed images to Amazon S3.
 
 _Note: This extension uses the TinyPNG own NodeJS [Tinify API client](https://github.com/tinify/tinify-nodejs). Thus issues you might notice in the extension are actual issues of this library._
 
