@@ -2,10 +2,14 @@
 
 All notable changes to the "tinypng" extension will be documented in this file.
 
+## 0.3.0
+
+-   [Changed] Behaviour to not overwrite source files per default.
+
 ## 0.2.1
 
 -   [Security] Update node dependencies to the newest versions.
--   [Changed] Printing name of the compressed file at the end of sucess message for better readability.
+-   [Changed] Printing name of the compressed file at the end of success message for better readability.
 
 ## 0.2.0
 

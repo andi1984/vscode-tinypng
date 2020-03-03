@@ -35,6 +35,9 @@ _!!!Be aware of [TinyPNG API](https://tinypng.com/developers)'s pricing model! A
 This extension contributes the following settings:
 
 -   `tinypng.apiKey`: Your own TinyPNG API Key
+-   `tinypng.forceOverwrite`: Force the extension to overwrite the source file
+    with the compressed one.
+-   `tinypng.compressedFilePostfix`: Postfix string that is appended to the compressed file, unless forceOverwrite is enabled. (default: ".min")
 
 ## Known Issues/Limitations
 

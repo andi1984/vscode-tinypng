@@ -2,18 +2,41 @@
 // Import the module and reference it with the alias vscode in your code below
 const vscode = require('vscode');
 const tinify = require('tinify');
+const path = require('path');
 
 /**
  * Function to compress a single image.
  * @param {Object} file
  */
 const compressImage = file => {
+    const shouldOverwrite = vscode.workspace
+        .getConfiguration('tinypng')
+        .get('forceOverwrite');
+
+    // Note: Define the destination file path for the compressed image.
+    let destinationFilePath = file.fsPath;
+    // In case the extension should not overwrite the source file (default)…
+    if (!shouldOverwrite) {
+        // …take the postfix defined in the settings.
+        const postfix = vscode.workspace
+            .getConfiguration('tinypng')
+            .get('compressedFilePostfix');
+
+        const parsedPath = path.parse(file.fsPath);
+
+        // Generate file in format: <name><postfix>.<ext>
+        destinationFilePath = path.join(
+            parsedPath.dir,
+            `${parsedPath.name}${postfix}${parsedPath.ext}`
+        );
+    }
+    
     const statusBarItem = vscode.window.createStatusBarItem(
         vscode.StatusBarAlignment.Left
     );
     statusBarItem.text = `Compressing file ${file.fsPath}...`;
     statusBarItem.show();
-    return tinify.fromFile(file.fsPath).toFile(file.fsPath, error => {
+    return tinify.fromFile(file.fsPath).toFile(destinationFilePath, error => {
         statusBarItem.hide();
         if (error) {
             if (error instanceof tinify.AccountError) {
@@ -53,7 +76,7 @@ const compressImage = file => {
             }
         } else {
             vscode.window.showInformationMessage(
-                `Successfully compressed ${file.fsPath}!`
+                `Successfully compressed ${file.fsPath} to ${destinationFilePath}!`
             );
         }
     });
