@@ -1,121 +1,137 @@
 {
-  "name": "tinypng",
-  "displayName": "TinyPNG",
-  "description": "Use TinyPNG from within VSCode",
-  "version": "0.2.1",
-  "publisher": "andi1984",
-  "engines": {
-    "vscode": "^1.18.0"
-  },
-  "categories": [
-    "Other"
-  ],
-  "activationEvents": [
-    "onCommand:extension.compressFile",
-    "onCommand:extension.compressFolder",
-    "onCommand:extension.getCompressionCount"
-  ],
-  "main": "./extension",
-  "contributes": {
-    "configuration": [
-      {
-        "title": "TinyPNG Configuration",
-        "properties": {
-          "tinypng.apiKey": {
-            "type": "string",
-            "description": "Your TinyPNG API Key"
-          }
-        }
-      }
-    ],
-    "commands": [
-      {
-        "command": "extension.compressFile",
-        "title": "TinyPNG: Compress",
-        "category": "TinyPNG"
-      },
-      {
-        "command": "extension.compressFolder",
-        "title": "TinyPNG: Compress images in here",
-        "category": "TinyPNG"
-      },
-      {
-        "command": "extension.getCompressionCount",
-        "title": "Compression Count",
-        "category": "TinyPNG"
-      }
-    ],
-    "menus": {
-      "commandPalette": [
-        {
-          "command": "extension.getCompressionCount"
-        },
-        {
-          "command": "extension.compressFile",
-          "when": "False"
-        },
-        {
-          "command": "extension.compressFolder",
-          "when": "False"
-        }
-      ],
-      "explorer/context": [
-        {
-          "when": "resourceLangId == tinypng_file",
-          "command": "extension.compressFile",
-          "group": "1_modification"
-        },
-        {
-          "when": "explorerResourceIsFolder",
-          "command": "extension.compressFolder",
-          "group": "1_modification"
-        }
-      ]
+    "name": "tinypng",
+    "displayName": "TinyPNG",
+    "description": "Use TinyPNG from within VSCode",
+    "version": "0.2.1",
+    "publisher": "andi1984",
+    "engines": {
+        "vscode": "^1.18.0"
     },
-    "languages": [
-      {
-        "id": "tinypng_file",
-        "extensions": [
-          ".png",
-          ".jpg",
-          ".jpeg"
+    "categories": [
+        "Other"
+    ],
+    "activationEvents": [
+        "onCommand:extension.compressFile",
+        "onCommand:extension.compressFolder",
+        "onCommand:extension.getCompressionCount"
+    ],
+    "main": "./extension",
+    "contributes": {
+        "configuration": [
+            {
+                "title": "TinyPNG Configuration",
+                "properties": {
+                    "tinypng.apiKey": {
+                        "type": "string",
+                        "description": "Your TinyPNG API Key"
+                    },
+                    "tinypng.forceOverwrite": {
+                        "type": "boolean",
+                        "default": false,
+                        "description": "Only check this option if you want to force TinyPNG to overwrite your existing file instead of creating always a new file."
+                    },
+                    "tinypng.compressedFilePostfix": {
+                        "type": "string",
+                        "default": ".min",
+                        "description": "Postfix which is appended to the compressed file unless you are forcing the extension to overwrite the source file."
+                    }
+                }
+            }
+        ],
+        "commands": [
+            {
+                "command": "extension.compressFile",
+                "title": "TinyPNG: Compress",
+                "category": "TinyPNG"
+            },
+            {
+                "command": "extension.compressFolder",
+                "title": "TinyPNG: Compress images in here",
+                "category": "TinyPNG"
+            },
+            {
+                "command": "extension.getCompressionCount",
+                "title": "Compression Count",
+                "category": "TinyPNG"
+            }
+        ],
+        "menus": {
+            "commandPalette": [
+                {
+                    "command": "extension.getCompressionCount"
+                },
+                {
+                    "command": "extension.compressFile",
+                    "when": "False"
+                },
+                {
+                    "command": "extension.compressFolder",
+                    "when": "False"
+                }
+            ],
+            "editor/title/context": [
+                {
+                    "command": "extension.compressFile",
+                    "group": "1_modification"
+                }
+            ],
+            "explorer/context": [
+                {
+                    "when": "resourceLangId == tinypng_file",
+                    "command": "extension.compressFile",
+                    "group": "1_modification"
+                },
+                {
+                    "when": "explorerResourceIsFolder",
+                    "command": "extension.compressFolder",
+                    "group": "1_modification"
+                }
+            ]
+        },
+        "languages": [
+            {
+                "id": "tinypng_file",
+                "extensions": [
+                    ".png",
+                    ".jpg",
+                    ".jpeg"
+                ]
+            }
         ]
-      }
-    ]
-  },
-  "scripts": {
-    "postinstall": "node ./node_modules/vscode/bin/install",
-    "test": "node ./node_modules/vscode/bin/test"
-  },
-  "devDependencies": {
-    "@types/mocha": "^5.2.7",
-    "@types/node": "^12.7.7",
-    "eslint": "^6.4.0",
-    "typescript": "^3.6.3",
-    "vscode": "^1.1.36"
-  },
-  "dependencies": {
-    "tinify": "^1.5.0"
-  },
-  "bugs": {
-    "url": "https://github.com/andi1984/vscode-tinypng/issues",
-    "email": "andreas.sander@hotmail.de"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/andi1984/vscode-tinypng.git"
-  },
-  "badges": [
-    {
-      "url": "https://api.codeclimate.com/v1/badges/22bab9e7a8e1660326b1/maintainability",
-      "href": "https://codeclimate.com/github/andi1984/vscode-tinypng/maintainability",
-      "description": "Maintainability"
     },
-    {
-      "url": "https://david-dm.org/andi1984/vscode-tinypng/status.png",
-      "href": "https://david-dm.org/andi1984/vscode-tinypng",
-      "description": "Dependencies"
-    }
-  ],
-  "homepage": "https://github.com/andi1984/vscode-tinypng/blob/master/README.md"
+    "scripts": {
+        "postinstall": "node ./node_modules/vscode/bin/install",
+        "test": "node ./node_modules/vscode/bin/test"
+    },
+    "devDependencies": {
+        "@types/mocha": "^5.2.7",
+        "@types/node": "^12.7.7",
+        "eslint": "^6.4.0",
+        "typescript": "^3.6.3",
+        "vscode": "^1.1.36"
+    },
+    "dependencies": {
+        "tinify": "^1.5.0"
+    },
+    "bugs": {
+        "url": "https://github.com/andi1984/vscode-tinypng/issues",
+        "email": "andreas.sander@hotmail.de"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/andi1984/vscode-tinypng.git"
+    },
+    "badges": [
+        {
+            "url": "https://api.codeclimate.com/v1/badges/22bab9e7a8e1660326b1/maintainability",
+            "href": "https://codeclimate.com/github/andi1984/vscode-tinypng/maintainability",
+            "description": "Maintainability"
+        },
+        {
+            "url": "https://david-dm.org/andi1984/vscode-tinypng/status.png",
+            "href": "https://david-dm.org/andi1984/vscode-tinypng",
+            "description": "Dependencies"
+        }
+    ],
+    "homepage": "https://github.com/andi1984/vscode-tinypng/blob/master/README.md"
 }
