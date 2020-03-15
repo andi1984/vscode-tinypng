@@ -2,6 +2,11 @@
 
 All notable changes to the "tinypng" extension will be documented in this file.
 
+## 0.3.1
+
+-   [Fixed] Add missing file extension condition to editor/title/context menu
+-   [Security] Bump acorn from v7.1.0 to v7.1.1
+
 ## 0.3.0
 
 -   [Changed] Behaviour to not overwrite source files per default.
