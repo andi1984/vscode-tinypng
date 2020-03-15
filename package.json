@@ -71,6 +71,7 @@
             ],
             "editor/title/context": [
                 {
+                    "when": "resourceLangId == tinypng_file",
                     "command": "extension.compressFile",
                     "group": "1_modification"
                 }
