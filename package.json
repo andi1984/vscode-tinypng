@@ -12,7 +12,7 @@
     ],
     "icon": "images/icon.png",
     "galleryBanner": {
-        "color": "#FFF",
+        "color": "#404040",
         "theme": "dark"
     },
     "activationEvents": [
