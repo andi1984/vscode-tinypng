@@ -10,6 +10,11 @@
     "categories": [
         "Other"
     ],
+    "icon": "images/icon.png",
+    "galleryBanner": {
+        "color": "#FFF",
+        "theme": "dark"
+    },
     "activationEvents": [
         "onCommand:extension.compressFile",
         "onCommand:extension.compressFolder",
