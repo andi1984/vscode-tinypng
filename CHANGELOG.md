@@ -2,6 +2,20 @@
 
 All notable changes to the "tinypng" extension will be documented in this file.
 
+## 0.3.3
+
+- [Fixed] Issue with Marketplace Gallery banner styling *whoops*
+
+## 0.3.2
+
+-   [Security] Update node dependencies to the newest versions.
+-   [Changed] Extension icon
+
+## 0.3.1
+
+-   [Fixed] Title context menu only appears from now on for appropriate image files.
+-   [Security] Update node dependencies to the newest versions.
+
 ## 0.3.0
 
 -   [Changed] Behaviour to not overwrite source files per default.
