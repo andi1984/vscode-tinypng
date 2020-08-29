@@ -2,9 +2,13 @@
 
 All notable changes to the "tinypng" extension will be documented in this file.
 
+## 0.3.4
+
+-   [Security] Update node dependencies to the newest versions.
+
 ## 0.3.3
 
-- [Fixed] Issue with Marketplace Gallery banner styling *whoops*
+-   [Fixed] Issue with Marketplace Gallery banner styling _whoops_
 
 ## 0.3.2
 
