@@ -1,48 +1,68 @@
-# Change Log
+# Changelog
 
-All notable changes to the "tinypng" extension will be documented in this file.
+## [0.3.4](https://github.com/andi1984/vscode-tinypng/tree/0.3.4) (2020-08-29)
 
-## 0.3.4
+[Full Changelog](https://github.com/andi1984/vscode-tinypng/compare/0.3.0...0.3.4)
 
--   [Security] Update node dependencies to the newest versions.
+**Security fixes:**
 
-## 0.3.3
+- \[Security\] Bump lodash from 4.17.15 to 4.17.20 [\#64](https://github.com/andi1984/vscode-tinypng/pull/64) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
+- \[Security\] Bump https-proxy-agent from 2.2.2 to 2.2.4 [\#11](https://github.com/andi1984/vscode-tinypng/pull/11) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
 
--   [Fixed] Issue with Marketplace Gallery banner styling _whoops_
+**Closed issues:**
 
-## 0.3.2
+- The TinyPNG option should not exist for incompatible files [\#8](https://github.com/andi1984/vscode-tinypng/issues/8)
 
--   [Security] Update node dependencies to the newest versions.
--   [Changed] Extension icon
+**Merged pull requests:**
 
-## 0.3.1
+- Bump @types/node from 14.6.1 to 14.6.2 [\#70](https://github.com/andi1984/vscode-tinypng/pull/70) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
+- Bump @types/node from 13.9.3 to 14.6.1 [\#69](https://github.com/andi1984/vscode-tinypng/pull/69) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
+- Bump typescript from 3.8.3 to 4.0.2 [\#68](https://github.com/andi1984/vscode-tinypng/pull/68) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
+- Bump @types/mocha from 7.0.2 to 8.0.3 [\#66](https://github.com/andi1984/vscode-tinypng/pull/66) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
+- Bump eslint from 6.8.0 to 7.7.0 [\#65](https://github.com/andi1984/vscode-tinypng/pull/65) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
+- Bump vscode from 1.1.36 to 1.1.37 [\#25](https://github.com/andi1984/vscode-tinypng/pull/25) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
+- Bump @types/node from 12.7.7 to 13.9.3 [\#16](https://github.com/andi1984/vscode-tinypng/pull/16) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
+- Bump @types/mocha from 5.2.7 to 7.0.2 [\#14](https://github.com/andi1984/vscode-tinypng/pull/14) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
+- Bump eslint from 6.4.0 to 6.8.0 [\#13](https://github.com/andi1984/vscode-tinypng/pull/13) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
+- Bump typescript from 3.6.3 to 3.8.3 [\#12](https://github.com/andi1984/vscode-tinypng/pull/12) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
+- Bump acorn from 7.1.0 to 7.1.1 [\#9](https://github.com/andi1984/vscode-tinypng/pull/9) ([dependabot[bot]](https://github.com/apps/dependabot))
 
--   [Fixed] Title context menu only appears from now on for appropriate image files.
--   [Security] Update node dependencies to the newest versions.
+## [0.3.0](https://github.com/andi1984/vscode-tinypng/tree/0.3.0) (2020-03-03)
 
-## 0.3.0
+[Full Changelog](https://github.com/andi1984/vscode-tinypng/compare/v0.2.1...0.3.0)
 
--   [Changed] Behaviour to not overwrite source files per default.
+**Implemented enhancements:**
 
-## 0.2.1
+- \[Future Request\] Option for not overwriting file [\#6](https://github.com/andi1984/vscode-tinypng/issues/6)
 
--   [Security] Update node dependencies to the newest versions.
--   [Changed] Printing name of the compressed file at the end of success message for better readability.
+**Fixed bugs:**
 
-## 0.2.0
+- No usage option for files if folder is not open [\#7](https://github.com/andi1984/vscode-tinypng/issues/7)
 
--   [Fixed] Windows support.
+## [v0.2.1](https://github.com/andi1984/vscode-tinypng/tree/v0.2.1) (2019-09-25)
 
-## 0.1.0
+[Full Changelog](https://github.com/andi1984/vscode-tinypng/compare/v0.2.0...v0.2.1)
 
--   Published version on marketplace.
+**Closed issues:**
 
-## 0.0.2
+- API - code [\#3](https://github.com/andi1984/vscode-tinypng/issues/3)
 
--   [Fixed] Command names in explorer context prefixed by "TinyPNG".
+## [v0.2.0](https://github.com/andi1984/vscode-tinypng/tree/v0.2.0) (2018-01-03)
 
-## 0.0.1
+[Full Changelog](https://github.com/andi1984/vscode-tinypng/compare/v0.1.4...v0.2.0)
 
--   [Added] Ability to compress single file
--   [Added] Ability to compress a complete folder
--   [Added] Ability to see personal API compression count via command
+**Fixed bugs:**
+
+- Lack of Windows support  [\#1](https://github.com/andi1984/vscode-tinypng/issues/1)
+
+**Merged pull requests:**
+
+- \[Fixed\] Windows Support [\#2](https://github.com/andi1984/vscode-tinypng/pull/2) ([andi1984](https://github.com/andi1984))
+
+## [v0.1.4](https://github.com/andi1984/vscode-tinypng/tree/v0.1.4) (2018-01-03)
+
+[Full Changelog](https://github.com/andi1984/vscode-tinypng/compare/b72e562f45cb2a7cb77f30ecb1a92b25786c8f40...v0.1.4)
+
+
+
+\* *This Changelog was automatically generated by [github_changelog_generator](https://github.com/github-changelog-generator/github-changelog-generator)*
