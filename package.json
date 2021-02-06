@@ -2,7 +2,7 @@
     "name": "tinypng",
     "displayName": "TinyPNG",
     "description": "Use TinyPNG from within VSCode",
-    "version": "0.3.4",
+    "version": "0.3.5",
     "publisher": "andi1984",
     "engines": {
         "vscode": "^1.18.0"
