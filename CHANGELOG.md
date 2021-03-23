@@ -1,5 +1,22 @@
 # Changelog
 
+## [1.0.0](https://github.com/andi1984/vscode-tinypng/tree/1.0.0) (2021-03-23)
+
+[Full Changelog](https://github.com/andi1984/vscode-tinypng/compare/0.3.4...1.0.0)
+
+**Merged pull requests:**
+
+- \[Added\] TypeScript Support [\#140](https://github.com/andi1984/vscode-tinypng/pull/140) ([andi1984](https://github.com/andi1984))
+- Bump @types/mocha from 8.2.1 to 8.2.2 [\#139](https://github.com/andi1984/vscode-tinypng/pull/139) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
+- Bump @types/node from 14.14.25 to 14.14.35 [\#138](https://github.com/andi1984/vscode-tinypng/pull/138) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
+- Bump eslint from 7.19.0 to 7.22.0 [\#137](https://github.com/andi1984/vscode-tinypng/pull/137) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
+- Bump typescript from 4.1.3 to 4.2.3 [\#133](https://github.com/andi1984/vscode-tinypng/pull/133) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
+- Bump @types/mocha from 8.2.0 to 8.2.1 [\#128](https://github.com/andi1984/vscode-tinypng/pull/128) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
+- Bump @types/node from 14.6.2 to 14.14.25 [\#122](https://github.com/andi1984/vscode-tinypng/pull/122) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
+- Bump eslint from 7.7.0 to 7.19.0 [\#120](https://github.com/andi1984/vscode-tinypng/pull/120) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
+- Bump typescript from 4.0.2 to 4.1.3 [\#107](https://github.com/andi1984/vscode-tinypng/pull/107) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
+- Bump @types/mocha from 8.0.3 to 8.2.0 [\#104](https://github.com/andi1984/vscode-tinypng/pull/104) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
+
 ## [0.3.4](https://github.com/andi1984/vscode-tinypng/tree/0.3.4) (2020-08-29)
 
 [Full Changelog](https://github.com/andi1984/vscode-tinypng/compare/0.3.0...0.3.4)
