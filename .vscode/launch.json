@@ -11,7 +11,8 @@
                 "--disable-extensions",
                 "--extensionDevelopmentPath=${workspaceRoot}"
             ],
-            "stopOnEntry": false
+            "stopOnEntry": false,
+            "preLaunchTask": "tsc:compile"
         },
         {
             "name": "Extension Tests",
