@@ -113,7 +113,7 @@
         "watch": "tsc -watch -p tsconfig.json"
     },
     "devDependencies": {
-        "@types/mocha": "^8.2.2",
+        "@types/mocha": "^8.2.3",
         "@types/node": "^15.0.2",
         "@types/vscode": "^1.55.0",
         "eslint": "^7.25.0",
