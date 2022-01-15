@@ -22,7 +22,7 @@ Select a folder and press the corresponding TinyPNG context menu entry.
 
 ![Context menu for a complete folder](images/compress-folder.png)
 
-## Requirements
+## Requirementsss
 
 You need to have an active TinyPNG API key, which you can find in your [TinyPNG Developer Dashboard](https://tinypng.com/dashboard/developers). You can provide the API key in your settings, see below.
 
