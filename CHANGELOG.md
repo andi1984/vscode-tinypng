@@ -1,5 +1,28 @@
 # Changelog
 
+## [v1.1.0](https://github.com/andi1984/vscode-tinypng/tree/v1.1.0) (2022-01-15)
+
+[Full Changelog](https://github.com/andi1984/vscode-tinypng/compare/1.0.0...v1.1.0)
+
+**Merged pull requests:**
+
+- \[Fix\] VSCode Test Setup [\#268](https://github.com/andi1984/vscode-tinypng/pull/268) ([andi1984](https://github.com/andi1984))
+- \[Fixed\] Using TS on imports/requires [\#266](https://github.com/andi1984/vscode-tinypng/pull/266) ([andi1984](https://github.com/andi1984))
+- Bump ansi-regex from 5.0.0 to 5.0.1 [\#265](https://github.com/andi1984/vscode-tinypng/pull/265) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump tinify from 1.6.0-beta.2 to 1.6.1 [\#264](https://github.com/andi1984/vscode-tinypng/pull/264) ([andi1984](https://github.com/andi1984))
+- Bump @types/node from 15.0.2 to 17.0.8 [\#263](https://github.com/andi1984/vscode-tinypng/pull/263) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump eslint from 7.25.0 to 8.6.0 [\#260](https://github.com/andi1984/vscode-tinypng/pull/260) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump @types/vscode from 1.55.0 to 1.63.1 [\#254](https://github.com/andi1984/vscode-tinypng/pull/254) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump typescript from 4.2.4 to 4.5.4 [\#251](https://github.com/andi1984/vscode-tinypng/pull/251) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump @types/mocha from 8.2.2 to 9.0.0 [\#192](https://github.com/andi1984/vscode-tinypng/pull/192) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump @types/node from 14.14.37 to 15.0.2 [\#153](https://github.com/andi1984/vscode-tinypng/pull/153) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
+- Upgrade to GitHub-native Dependabot [\#152](https://github.com/andi1984/vscode-tinypng/pull/152) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
+- Bump eslint from 7.23.0 to 7.25.0 [\#149](https://github.com/andi1984/vscode-tinypng/pull/149) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
+- Bump typescript from 4.2.3 to 4.2.4 [\#145](https://github.com/andi1984/vscode-tinypng/pull/145) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
+- Bump @types/vscode from 1.54.0 to 1.55.0 [\#144](https://github.com/andi1984/vscode-tinypng/pull/144) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
+- Bump eslint from 7.22.0 to 7.23.0 [\#143](https://github.com/andi1984/vscode-tinypng/pull/143) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
+- Bump @types/node from 14.14.35 to 14.14.37 [\#142](https://github.com/andi1984/vscode-tinypng/pull/142) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
+
 ## [1.0.0](https://github.com/andi1984/vscode-tinypng/tree/1.0.0) (2021-03-23)
 
 [Full Changelog](https://github.com/andi1984/vscode-tinypng/compare/0.3.4...1.0.0)
