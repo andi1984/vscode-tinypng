@@ -53,4 +53,10 @@ _Note: This extension uses the TinyPNG own NodeJS [Tinify API client](https://gi
 
 Release notes can be found in the [changelog](./CHANGELOG.md).
 
+## Release process
+
+-   Eventually `vsce login`
+-   `vsce publish`
+-   Updating Changelog via `github_changelog_generator -u andi1984 -p vscode-tinypng -t <token>`
+
 **Enjoy!**
