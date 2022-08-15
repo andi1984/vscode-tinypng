@@ -14,7 +14,7 @@ const compressImage = (file: Uri) => {
     const shouldOverwrite: boolean =
         vscode.workspace
             .getConfiguration('tinypng')
-            .get<boolean>('overwriteforceOverwrite') || false;
+            .get<boolean>('forceOverwrite') || false;
 
     // Note: Define the destination file path for the compressed image.
     let destinationFilePath = file.fsPath;
