@@ -1,5 +1,17 @@
 # Changelog
 
+## [Unreleased](https://github.com/andi1984/vscode-tinypng/tree/HEAD)
+
+[Full Changelog](https://github.com/andi1984/vscode-tinypng/compare/v1.1.0...HEAD)
+
+**Merged pull requests:**
+
+- Fix forceOverwrite setting name [\#304](https://github.com/andi1984/vscode-tinypng/pull/304) ([hydrajump](https://github.com/hydrajump))
+- Bump @typescript-eslint/parser from 5.9.1 to 5.10.2 [\#282](https://github.com/andi1984/vscode-tinypng/pull/282) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump eslint from 8.6.0 to 8.8.0 [\#281](https://github.com/andi1984/vscode-tinypng/pull/281) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump @types/node from 17.0.8 to 17.0.13 [\#280](https://github.com/andi1984/vscode-tinypng/pull/280) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump typescript from 4.5.4 to 4.5.5 [\#275](https://github.com/andi1984/vscode-tinypng/pull/275) ([dependabot[bot]](https://github.com/apps/dependabot))
+
 ## [v1.1.0](https://github.com/andi1984/vscode-tinypng/tree/v1.1.0) (2022-01-15)
 
 [Full Changelog](https://github.com/andi1984/vscode-tinypng/compare/1.0.0...v1.1.0)
