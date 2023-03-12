@@ -58,6 +58,11 @@
                 "command": "extension.getCompressionCount",
                 "title": "Compression Count",
                 "category": "TinyPNG"
+            },
+            {
+                "command": "extension.compressGitStage",
+                "title": "Compress images in git stage",
+                "category": "TinyPNG"
             }
         ],
         "menus": {
