@@ -3,7 +3,7 @@
 import vscode = require('vscode');
 import tinify = require('tinify');
 import path = require('path');
-
+import { spawnSync } from 'child_process'
 import { ExtensionContext, Disposable, Uri } from 'vscode';
 
 /**
@@ -104,6 +104,27 @@ const validate = (
 
 const afterValidation = (callback: Function) => validate(callback);
 
+const compressStageFiles = (editorPath: string) => {
+    try {
+        const lines = spawnSync('git', ['diff', '--staged', '--diff-filter=ACMR', '--name-only', '-z'], { encoding: 'utf-8', cwd: editorPath })
+        const files = lines.stdout
+            .replace(/\u0000$/, '')
+            .split('\u0000')
+            .filter(f => /\.(png|jpg|jpeg)$/.test(f))
+        if (files.length === 0) {
+            vscode.window.showInformationMessage(
+                `TinyPNG: No images found in the git stage.`
+            )
+            return
+        }
+        files.forEach(f => compressImage(Uri.parse(`${editorPath}/${f}`)))
+    } catch(err) {
+        vscode.window.showErrorMessage(
+            `TinyPNG: ${(err as Error).message}`
+        );
+    }
+}
+
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
 function activate(context: ExtensionContext) {
@@ -159,6 +180,30 @@ function activate(context: ExtensionContext) {
             )
         );
     context.subscriptions.push(disposableCompressionCount);
+
+    let disposableCompressGitStage: Disposable =
+        vscode.commands.registerCommand('extension.compressGitStage', () => {
+            const folders = vscode.workspace.workspaceFolders
+            if (!folders) {
+                vscode.window.showInformationMessage(
+                    `TinyPNG: No editor path found.`
+                )
+                return
+            }
+            if (folders.length <= 1) {
+                compressStageFiles(folders[0].uri.fsPath)
+                return
+            }
+            const folderNames = folders.map(folder => folder.name)
+            vscode.window.showQuickPick(folderNames).then((folderName) => {
+                const folder = folders.find(folder => folder.name === folderName)
+                if (folder) {
+                    compressStageFiles(folder.uri.fsPath)
+                }
+            })
+        });
+
+    context.subscriptions.push(disposableCompressGitStage)
 }
 exports.activate = activate;
 
