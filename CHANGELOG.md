@@ -1,12 +1,36 @@
 # Changelog
 
-## [Unreleased](https://github.com/andi1984/vscode-tinypng/tree/HEAD)
+## [v1.2.0](https://github.com/andi1984/vscode-tinypng/tree/v1.2.0) (2023-04-26)
 
-[Full Changelog](https://github.com/andi1984/vscode-tinypng/compare/v1.1.0...HEAD)
+[Full Changelog](https://github.com/andi1984/vscode-tinypng/compare/v1.1.1...v1.2.0)
+
+**Implemented enhancements:**
+
+- \[Feature Request\] Only compress images added to the Git stage [\#497](https://github.com/andi1984/vscode-tinypng/issues/497)
 
 **Merged pull requests:**
 
+- Bump @types/node from 17.0.13 to 18.16.1 [\#520](https://github.com/andi1984/vscode-tinypng/pull/520) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump @typescript-eslint/parser from 5.10.2 to 5.59.1 [\#519](https://github.com/andi1984/vscode-tinypng/pull/519) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump eslint from 8.8.0 to 8.39.0 [\#517](https://github.com/andi1984/vscode-tinypng/pull/517) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump @types/vscode from 1.63.1 to 1.77.0 [\#512](https://github.com/andi1984/vscode-tinypng/pull/512) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump minimatch and mocha [\#509](https://github.com/andi1984/vscode-tinypng/pull/509) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump typescript from 4.5.5 to 5.0.4 [\#508](https://github.com/andi1984/vscode-tinypng/pull/508) ([dependabot[bot]](https://github.com/apps/dependabot))
+- feat: compress images at git stage [\#507](https://github.com/andi1984/vscode-tinypng/pull/507) ([nieyuyao](https://github.com/nieyuyao))
+- Bump minimist from 1.2.5 to 1.2.8 [\#505](https://github.com/andi1984/vscode-tinypng/pull/505) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump @types/glob from 7.2.0 to 8.1.0 [\#495](https://github.com/andi1984/vscode-tinypng/pull/495) ([dependabot[bot]](https://github.com/apps/dependabot))
+- \[Snyk\] Upgrade tinify from 1.6.1 to 1.7.1 [\#440](https://github.com/andi1984/vscode-tinypng/pull/440) ([snyk-bot](https://github.com/snyk-bot))
+
+## [v1.1.1](https://github.com/andi1984/vscode-tinypng/tree/v1.1.1) (2022-08-15)
+
+[Full Changelog](https://github.com/andi1984/vscode-tinypng/compare/v1.1.0...v1.1.1)
+
+**Fixed bugs:**
+
 - Fix forceOverwrite setting name [\#304](https://github.com/andi1984/vscode-tinypng/pull/304) ([hydrajump](https://github.com/hydrajump))
+
+**Merged pull requests:**
+
 - Bump @typescript-eslint/parser from 5.9.1 to 5.10.2 [\#282](https://github.com/andi1984/vscode-tinypng/pull/282) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump eslint from 8.6.0 to 8.8.0 [\#281](https://github.com/andi1984/vscode-tinypng/pull/281) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump @types/node from 17.0.8 to 17.0.13 [\#280](https://github.com/andi1984/vscode-tinypng/pull/280) ([dependabot[bot]](https://github.com/apps/dependabot))
@@ -14,7 +38,7 @@
 
 ## [v1.1.0](https://github.com/andi1984/vscode-tinypng/tree/v1.1.0) (2022-01-15)
 
-[Full Changelog](https://github.com/andi1984/vscode-tinypng/compare/1.0.0...v1.1.0)
+[Full Changelog](https://github.com/andi1984/vscode-tinypng/compare/remove...v1.1.0)
 
 **Merged pull requests:**
 
@@ -35,9 +59,17 @@
 - Bump eslint from 7.22.0 to 7.23.0 [\#143](https://github.com/andi1984/vscode-tinypng/pull/143) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
 - Bump @types/node from 14.14.35 to 14.14.37 [\#142](https://github.com/andi1984/vscode-tinypng/pull/142) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
 
+## [remove](https://github.com/andi1984/vscode-tinypng/tree/remove) (2022-01-15)
+
+[Full Changelog](https://github.com/andi1984/vscode-tinypng/compare/1.0.0...remove)
+
 ## [1.0.0](https://github.com/andi1984/vscode-tinypng/tree/1.0.0) (2021-03-23)
 
-[Full Changelog](https://github.com/andi1984/vscode-tinypng/compare/0.3.4...1.0.0)
+[Full Changelog](https://github.com/andi1984/vscode-tinypng/compare/v1.0.0...1.0.0)
+
+## [v1.0.0](https://github.com/andi1984/vscode-tinypng/tree/v1.0.0) (2021-03-23)
+
+[Full Changelog](https://github.com/andi1984/vscode-tinypng/compare/v0.3.5...v1.0.0)
 
 **Merged pull requests:**
 
@@ -47,6 +79,13 @@
 - Bump eslint from 7.19.0 to 7.22.0 [\#137](https://github.com/andi1984/vscode-tinypng/pull/137) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
 - Bump typescript from 4.1.3 to 4.2.3 [\#133](https://github.com/andi1984/vscode-tinypng/pull/133) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
 - Bump @types/mocha from 8.2.0 to 8.2.1 [\#128](https://github.com/andi1984/vscode-tinypng/pull/128) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
+
+## [v0.3.5](https://github.com/andi1984/vscode-tinypng/tree/v0.3.5) (2021-02-06)
+
+[Full Changelog](https://github.com/andi1984/vscode-tinypng/compare/0.3.4...v0.3.5)
+
+**Merged pull requests:**
+
 - Bump @types/node from 14.6.2 to 14.14.25 [\#122](https://github.com/andi1984/vscode-tinypng/pull/122) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
 - Bump eslint from 7.7.0 to 7.19.0 [\#120](https://github.com/andi1984/vscode-tinypng/pull/120) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
 - Bump typescript from 4.0.2 to 4.1.3 [\#107](https://github.com/andi1984/vscode-tinypng/pull/107) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
