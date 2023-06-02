@@ -126,7 +126,7 @@
         "@vscode/test-electron": "^2.1.0",
         "eslint": "^8.40.0",
         "mocha": "^9.2.2",
-        "typescript": "^5.0.4"
+        "typescript": "^5.1.3"
     },
     "dependencies": {
         "tinify": "^1.7.1"
