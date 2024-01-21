@@ -110,7 +110,7 @@ const compressStageFiles = (editorPath: string) => {
         const files = lines.stdout
             .replace(/\u0000$/, '')
             .split('\u0000')
-            .filter(f => /\.(png|jpg|jpeg)$/.test(f))
+            .filter(f => /\.(png|jpg|jpeg|webp)$/.test(f))
         if (files.length === 0) {
             vscode.window.showInformationMessage(
                 `TinyPNG: No images found in the git stage.`
@@ -162,7 +162,7 @@ function activate(context: ExtensionContext) {
                 .findFiles(
                     new vscode.RelativePattern(
                         folder.path,
-                        `**/*.{png,jpg,jpeg}`
+                        `**/*.{png,jpg,jpeg,webp}`
                     )
                 )
                 .then((files: any) => files.forEach(compressImage));
