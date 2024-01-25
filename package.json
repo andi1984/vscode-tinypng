@@ -105,7 +105,8 @@
                 "extensions": [
                     ".png",
                     ".jpg",
-                    ".jpeg"
+                    ".jpeg",
+                    ".webp"
                 ]
             }
         ]
