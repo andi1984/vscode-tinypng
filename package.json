@@ -130,7 +130,7 @@
         "typescript": "^5.4.5"
     },
     "dependencies": {
-        "tinify": "^1.8.0"
+        "tinify": "^1.8.1"
     },
     "bugs": {
         "url": "https://github.com/andi1984/vscode-tinypng/issues",
