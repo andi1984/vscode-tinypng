@@ -1,2 +1,34 @@
-// Place your settings in this file to overwrite default and user settings.
-{}
+{
+    // TypeScript
+    "typescript.tsdk": "node_modules/typescript/lib",
+    "typescript.enablePromptUseWorkspaceTsdk": true,
+
+    // Search
+    "search.exclude": {
+        "out": true,
+        "node_modules": true,
+        ".vscode-test": true
+    },
+
+    // Files
+    "files.exclude": {
+        "out": false,
+        ".vscode-test": true
+    },
+
+    // Editor
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": "explicit"
+    },
+
+    // ESLint
+    "eslint.validate": [
+        "javascript",
+        "typescript"
+    ],
+
+    // Testing
+    "mochaExplorer.files": "out/test/**/*.test.js",
+    "mochaExplorer.require": "out/test/suite/index.js"
+}
