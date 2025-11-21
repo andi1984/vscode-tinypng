@@ -10,7 +10,7 @@ on:
     branches: [develop]
 
 jobs:
-  build:
+  build-and-test:
     runs-on: ubuntu-latest
 
     strategy:
@@ -18,16 +18,25 @@ jobs:
         node-version: [20.x, 21.x, 22.x]
 
     steps:
-      - uses: actions/checkout@v4
-      - name: Use Node.js ${{ matrix.node-version }}
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
           cache: "npm"
-      - run: npm ci
-      - run: npm run compile --if-present
-      - name: Run headless test
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Compile TypeScript
+        run: npm run compile
+
+      - name: Run linter
+        run: npm run lint
+
+      - name: Run tests in headless mode
         uses: GabrielBB/xvfb-action@v1.6
         with:
           run: npm test
-      - run: npm run lint
