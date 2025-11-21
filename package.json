@@ -113,6 +113,8 @@
     },
     "scripts": {
         "test": "npm run compile && node --trace-warnings ./out/test/runTest.js",
+        "test:unit": "npm run compile && npm test",
+        "pretest": "npm run compile",
         "vscode:prepublish": "npm run compile",
         "compile": "tsc -p tsconfig.json",
         "watch": "tsc -watch -p tsconfig.json",
