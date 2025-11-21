@@ -1,6 +1,12 @@
 import * as assert from 'assert';
 import * as vscode from 'vscode';
 
+// Helper to detect if we're running in web extension mode
+const isWebExtension = () => {
+    // In web extensions, certain Node.js modules are not available
+    return typeof process === 'undefined' || !process.versions || !process.versions.node;
+};
+
 suite('Integration Tests', () => {
     let extension: vscode.Extension<any> | undefined;
 
@@ -12,13 +18,13 @@ suite('Integration Tests', () => {
     });
 
     suite('Command Registration and Availability', () => {
-        test('All commands should be registered after activation', async () => {
+        test('All commands should be registered after activation', async function() {
             const commands = await vscode.commands.getCommands(true);
             const extensionCommands = [
                 'extension.compressFile',
                 'extension.compressFolder',
                 'extension.getCompressionCount',
-                'extension.compressGitStage'
+                ...(isWebExtension() ? [] : ['extension.compressGitStage'])
             ];
 
             extensionCommands.forEach(cmd => {

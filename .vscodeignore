@@ -5,3 +5,11 @@ test/**
 jsconfig.json
 vsc-extension-quickstart.md
 .eslintrc.json
+**/*.ts
+**/*.map
+node_modules/**
+src/**
+out/**
+webpack.config.js
+tsconfig.json
+.eslintrc.json

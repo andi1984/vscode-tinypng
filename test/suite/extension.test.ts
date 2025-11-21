@@ -1,6 +1,12 @@
 import * as assert from 'assert';
 import * as vscode from 'vscode';
 
+// Helper to detect if we're running in web extension mode
+const isWebExtension = () => {
+    // In web extensions, certain Node.js modules are not available
+    return typeof process === 'undefined' || !process.versions || !process.versions.node;
+};
+
 suite('TinyPNG Extension Test Suite', () => {
     vscode.window.showInformationMessage('Start all tests.');
 
@@ -30,7 +36,12 @@ suite('TinyPNG Extension Test Suite', () => {
         assert.ok(commands.includes('extension.getCompressionCount'));
     });
 
-    test('Should register compressGitStage command', async () => {
+    test('Should register compressGitStage command', async function() {
+        // Skip this test in web extension mode - Git commands are not available in browser
+        if (isWebExtension()) {
+            this.skip();
+        }
+
         const commands = await vscode.commands.getCommands(true);
         assert.ok(commands.includes('extension.compressGitStage'));
     });

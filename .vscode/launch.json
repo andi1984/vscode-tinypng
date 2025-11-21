@@ -53,6 +53,36 @@
             "preLaunchTask": "npm: compile",
             "sourceMaps": true,
             "smartStep": true
+        },
+        {
+            "name": "Run Web Extension",
+            "type": "extensionHost",
+            "debugWebWorkerHost": true,
+            "request": "launch",
+            "args": [
+                "--extensionDevelopmentPath=${workspaceFolder}",
+                "--extensionDevelopmentKind=web"
+            ],
+            "outFiles": [
+                "${workspaceFolder}/dist/web/**/*.js"
+            ],
+            "preLaunchTask": "npm: compile-web"
+        },
+        {
+            "name": "Web Extension Tests",
+            "type": "extensionHost",
+            "debugWebWorkerHost": true,
+            "request": "launch",
+            "args": [
+                "--extensionDevelopmentPath=${workspaceFolder}",
+                "--extensionDevelopmentKind=web",
+                "--extensionTestsPath=${workspaceFolder}/out/test/suite/index.web"
+            ],
+            "outFiles": [
+                "${workspaceFolder}/dist/web/**/*.js",
+                "${workspaceFolder}/out/test/**/*.js"
+            ],
+            "preLaunchTask": "npm: compile-tests-web"
         }
     ]
 }
