@@ -92,11 +92,13 @@ const compressImage = (file: Uri) => {
  */
 const validate = (
     onSuccess: Function = () => {},
-    onFailure = (e: Error) => {}
+    onFailure?: (_e: Error) => void
 ) =>
     tinify.validate(function (err: Error | null) {
         if (err) {
-            onFailure(err);
+            if (onFailure) {
+                onFailure(err);
+            }
         } else {
             onSuccess();
         }
