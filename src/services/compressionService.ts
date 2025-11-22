@@ -4,6 +4,8 @@ import { Uri } from 'vscode';
 import { generateDestinationPath } from '../utils/fileUtils';
 import { handleCompressionError } from '../utils/errorHandler';
 import { ConfigService } from './configService';
+import { CompressionResult } from '../types';
+import fs = require('fs');
 
 /**
  * Service for handling image compression operations
@@ -73,5 +75,65 @@ export class CompressionService {
      */
     public static getCompressionCount(): number {
         return tinify.compressionCount || 0;
+    }
+
+    /**
+     * Compress image with detailed result callback (for queue system)
+     */
+    public static compressImageWithCallback(
+        file: Uri,
+        callback: (result: CompressionResult) => void
+    ): void {
+        const shouldOverwrite = ConfigService.shouldOverwrite();
+        const postfix = ConfigService.getCompressedFilePostfix();
+
+        const destinationFilePath = generateDestinationPath(
+            file,
+            shouldOverwrite,
+            postfix
+        );
+
+        // Get original file size
+        let originalSize = 0;
+        try {
+            const stats = fs.statSync(file.fsPath);
+            originalSize = stats.size;
+        } catch (error) {
+            // Ignore size read errors
+        }
+
+        tinify.fromFile(file.fsPath).toFile(destinationFilePath, (error: Error | null) => {
+            if (error) {
+                callback({
+                    success: false,
+                    sourcePath: file.fsPath,
+                    destinationPath: destinationFilePath,
+                    originalSize,
+                    error
+                });
+            } else {
+                // Get compressed file size
+                let compressedSize = 0;
+                try {
+                    const stats = fs.statSync(destinationFilePath);
+                    compressedSize = stats.size;
+                } catch (err) {
+                    // Ignore size read errors
+                }
+
+                const savedBytes = originalSize > 0 && compressedSize > 0
+                    ? originalSize - compressedSize
+                    : 0;
+
+                callback({
+                    success: true,
+                    sourcePath: file.fsPath,
+                    destinationPath: destinationFilePath,
+                    originalSize,
+                    compressedSize,
+                    savedBytes
+                });
+            }
+        });
     }
 }

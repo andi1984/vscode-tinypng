@@ -1,6 +1,6 @@
 import vscode = require('vscode');
 import { Uri } from 'vscode';
-import { CompressionService } from '../services/compressionService';
+import { QueueService } from '../services/queueService';
 
 /**
  * Command handler for compressing all images in a folder
@@ -13,5 +13,15 @@ export function compressFolderCommand(folder: Uri): void {
                 `**/*.{png,jpg,jpeg,webp}`
             )
         )
-        .then((files: Uri[]) => files.forEach(CompressionService.compressImage));
+        .then((files: Uri[]) => {
+            if (files.length === 0) {
+                vscode.window.showInformationMessage(
+                    'No image files found in this folder.'
+                );
+                return;
+            }
+
+            const queue = QueueService.getInstance();
+            queue.addToQueue(files);
+        });
 }
