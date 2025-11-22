@@ -1,7 +1,7 @@
 import vscode = require('vscode');
 import { Uri } from 'vscode';
 import { spawnSync } from 'child_process';
-import { CompressionService } from '../services/compressionService';
+import { QueueService } from '../services/queueService';
 
 /**
  * Compress staged image files in git
@@ -26,9 +26,9 @@ function compressStageFiles(editorPath: string): void {
             return;
         }
 
-        files.forEach((f: string) =>
-            CompressionService.compressImage(Uri.parse(`${editorPath}/${f}`))
-        );
+        const fileUris = files.map((f: string) => Uri.file(`${editorPath}/${f}`));
+        const queue = QueueService.getInstance();
+        queue.addToQueue(fileUris);
     } catch (err) {
         vscode.window.showErrorMessage(
             `TinyPNG: ${(err as Error).message}`

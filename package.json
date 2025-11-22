@@ -39,6 +39,13 @@
                         "type": "string",
                         "default": ".min",
                         "description": "Postfix which is appended to the compressed file unless you are forcing the extension to overwrite the source file."
+                    },
+                    "tinypng.concurrency": {
+                        "type": "number",
+                        "default": 3,
+                        "minimum": 1,
+                        "maximum": 10,
+                        "description": "Maximum number of images to compress simultaneously in batch operations."
                     }
                 }
             }

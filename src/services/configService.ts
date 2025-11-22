@@ -46,4 +46,13 @@ export class ConfigService {
             .getConfiguration(this.CONFIG_SECTION)
             .get<string>('compressedFilePostfix') || '.min';
     }
+
+    /**
+     * Get the concurrency limit for batch operations
+     */
+    public static getConcurrency(): number {
+        return vscode.workspace
+            .getConfiguration(this.CONFIG_SECTION)
+            .get<number>('concurrency') || 3;
+    }
 }
