@@ -1,3 +1,20 @@
+# [1.4.0](https://github.com/andi1984/vscode-tinypng/compare/1.3.0...1.4.0) (2025-11-22)
+
+
+### Bug Fixes
+
+* Update entry point to match new modular structure ([3f3925f](https://github.com/andi1984/vscode-tinypng/commit/3f3925f62fee58ca5610e3f297b094a1aa21b91d)), closes [#6](https://github.com/andi1984/vscode-tinypng/issues/6)
+* upgrade tinify from 1.7.1 to 1.8.0 ([ee99304](https://github.com/andi1984/vscode-tinypng/commit/ee9930499ca8ff84a8b7e495824ec1635e5a706f))
+* upgrade tinify from 1.8.0 to 1.8.1 ([cdee74f](https://github.com/andi1984/vscode-tinypng/commit/cdee74f1d28b3dd6968d7640170929d29ae1f0ed))
+
+
+### Features
+
+* add automated release workflow with semantic versioning ([5df1a5a](https://github.com/andi1984/vscode-tinypng/commit/5df1a5a4abeea3ff816bd1f3f560507d242bb69a))
+* Add queue system for batch compression with concurrency control ([3433aca](https://github.com/andi1984/vscode-tinypng/commit/3433acae76682c1ca255604c3366a317ed3e7749))
+
+
+
 # Changelog
 
 ## [v1.3.0](https://github.com/andi1984/vscode-tinypng/tree/v1.3.0) (2024-01-25)
