@@ -1,0 +1,238 @@
+name: Release
+
+on:
+  workflow_dispatch:
+    inputs:
+      version_type:
+        description: 'Version bump type (leave empty for auto-detection based on commits)'
+        required: false
+        type: choice
+        options:
+          - ''
+          - 'major'
+          - 'minor'
+          - 'patch'
+        default: ''
+      dry_run:
+        description: 'Dry run (do not publish)'
+        required: false
+        type: boolean
+        default: false
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: read
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Compile TypeScript
+        run: npm run compile
+
+      - name: Run tests
+        run: xvfb-run -a npm test
+
+      - name: Install release tools
+        run: |
+          npm install -g @vscode/vsce
+          npm install -g conventional-changelog-cli
+          npm install -g semver
+
+      - name: Get current version
+        id: current_version
+        run: |
+          CURRENT_VERSION=$(node -p "require('./package.json').version")
+          echo "version=$CURRENT_VERSION" >> $GITHUB_OUTPUT
+          echo "Current version: $CURRENT_VERSION"
+
+      - name: Get latest tag
+        id: latest_tag
+        run: |
+          LATEST_TAG=$(git describe --tags --abbrev=0 2>/dev/null || echo "v0.0.0")
+          echo "tag=$LATEST_TAG" >> $GITHUB_OUTPUT
+          echo "Latest tag: $LATEST_TAG"
+
+      - name: Analyze commits and determine version bump
+        id: version_bump
+        run: |
+          # Get commits since last tag
+          LATEST_TAG="${{ steps.latest_tag.outputs.tag }}"
+
+          # If manual version type is specified, use it
+          if [ -n "${{ github.event.inputs.version_type }}" ]; then
+            VERSION_TYPE="${{ github.event.inputs.version_type }}"
+            echo "Manual version type specified: $VERSION_TYPE"
+          else
+            # Analyze commits for conventional commit patterns
+            COMMITS=$(git log ${LATEST_TAG}..HEAD --pretty=format:"%s" 2>/dev/null || git log --pretty=format:"%s")
+
+            echo "Analyzing commits:"
+            echo "$COMMITS"
+
+            # Check for breaking changes (BREAKING CHANGE in commit body or ! in type)
+            if echo "$COMMITS" | grep -qiE "^[a-z]+(\([a-z]+\))?!:|BREAKING CHANGE:"; then
+              VERSION_TYPE="major"
+            # Check for new features
+            elif echo "$COMMITS" | grep -qiE "^feat(\([a-z]+\))?:"; then
+              VERSION_TYPE="minor"
+            # Check for fixes or other changes
+            elif echo "$COMMITS" | grep -qiE "^fix(\([a-z]+\))?:|^chore(\([a-z]+\))?:|^docs(\([a-z]+\))?:|^refactor(\([a-z]+\))?:"; then
+              VERSION_TYPE="patch"
+            else
+              # Default to patch if no conventional commits found
+              VERSION_TYPE="patch"
+            fi
+          fi
+
+          echo "bump_type=$VERSION_TYPE" >> $GITHUB_OUTPUT
+          echo "Version bump type: $VERSION_TYPE"
+
+      - name: Calculate new version
+        id: new_version
+        run: |
+          CURRENT_VERSION="${{ steps.current_version.outputs.version }}"
+          BUMP_TYPE="${{ steps.version_bump.outputs.bump_type }}"
+
+          # Use semver to calculate new version
+          NEW_VERSION=$(npx semver -i $BUMP_TYPE $CURRENT_VERSION)
+
+          echo "version=$NEW_VERSION" >> $GITHUB_OUTPUT
+          echo "New version: $NEW_VERSION"
+
+      - name: Update package.json version
+        run: |
+          NEW_VERSION="${{ steps.new_version.outputs.version }}"
+          npm version $NEW_VERSION --no-git-tag-version
+          echo "Updated package.json to version $NEW_VERSION"
+
+      - name: Generate CHANGELOG
+        run: |
+          NEW_VERSION="${{ steps.new_version.outputs.version }}"
+          LATEST_TAG="${{ steps.latest_tag.outputs.tag }}"
+
+          # Generate changelog for this version
+          if [ "$LATEST_TAG" = "v0.0.0" ]; then
+            # First release - include all commits
+            conventional-changelog -p angular -i CHANGELOG.md -s -r 0
+          else
+            # Incremental update
+            conventional-changelog -p angular -i CHANGELOG.md -s
+          fi
+
+          echo "Generated CHANGELOG.md"
+
+      - name: Configure Git
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Commit version bump and changelog
+        id: commit_changes
+        run: |
+          NEW_VERSION="${{ steps.new_version.outputs.version }}"
+
+          git add package.json package-lock.json CHANGELOG.md
+
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+            echo "committed=false" >> $GITHUB_OUTPUT
+          else
+            git commit -m "chore(release): v${NEW_VERSION}"
+            echo "committed=true" >> $GITHUB_OUTPUT
+            echo "Committed version bump and changelog"
+          fi
+
+      - name: Create Git tag
+        if: steps.commit_changes.outputs.committed == 'true'
+        run: |
+          NEW_VERSION="${{ steps.new_version.outputs.version }}"
+          git tag -a "v${NEW_VERSION}" -m "Release v${NEW_VERSION}"
+          echo "Created tag v${NEW_VERSION}"
+
+      - name: Push changes
+        if: steps.commit_changes.outputs.committed == 'true' && github.event.inputs.dry_run != 'true'
+        run: |
+          git push origin ${{ github.ref_name }}
+          git push origin --tags
+          echo "Pushed changes and tags"
+
+      - name: Package extension
+        run: |
+          vsce package
+          echo "Extension packaged successfully"
+
+      - name: Publish to VS Code Marketplace
+        if: github.event.inputs.dry_run != 'true'
+        env:
+          VSCE_PAT: ${{ secrets.VSCE_PAT }}
+        run: |
+          if [ -z "$VSCE_PAT" ]; then
+            echo "::warning::VSCE_PAT secret not set. Skipping marketplace publish."
+            echo "To enable automatic publishing, add VSCE_PAT to repository secrets."
+            exit 0
+          fi
+
+          vsce publish -p $VSCE_PAT
+          echo "Published to VS Code Marketplace"
+
+      - name: Extract changelog for this version
+        id: changelog
+        run: |
+          NEW_VERSION="${{ steps.new_version.outputs.version }}"
+
+          # Extract the changelog section for this version
+          CHANGELOG_CONTENT=$(awk "/^## \[?${NEW_VERSION}\]?/,/^## \[?[0-9]/" CHANGELOG.md | sed '$d' | tail -n +2)
+
+          if [ -z "$CHANGELOG_CONTENT" ]; then
+            CHANGELOG_CONTENT="Release v${NEW_VERSION}"
+          fi
+
+          # Save to file for GitHub release
+          echo "$CHANGELOG_CONTENT" > release_notes.md
+          echo "Extracted changelog for version $NEW_VERSION"
+
+      - name: Create GitHub Release
+        if: github.event.inputs.dry_run != 'true' && steps.commit_changes.outputs.committed == 'true'
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: v${{ steps.new_version.outputs.version }}
+          name: Release v${{ steps.new_version.outputs.version }}
+          body_path: release_notes.md
+          draft: false
+          prerelease: false
+          files: |
+            *.vsix
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Summary
+        run: |
+          echo "## Release Summary" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "- **Previous Version:** ${{ steps.current_version.outputs.version }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **New Version:** ${{ steps.new_version.outputs.version }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Bump Type:** ${{ steps.version_bump.outputs.bump_type }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Dry Run:** ${{ github.event.inputs.dry_run }}" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+
+          if [ "${{ github.event.inputs.dry_run }}" = "true" ]; then
+            echo "⚠️ **This was a dry run. No changes were published.**" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "✅ **Release completed successfully!**" >> $GITHUB_STEP_SUMMARY
+          fi

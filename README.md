@@ -53,10 +53,37 @@ _Note: This extension uses the TinyPNG own NodeJS [Tinify API client](https://gi
 
 Release notes can be found in the [changelog](./CHANGELOG.md).
 
-## Release process
+## Release Process
 
--   Eventually `vsce login`
+This project uses an automated release workflow powered by GitHub Actions.
+
+### Automated Release (Recommended)
+
+The extension uses semantic versioning based on [Conventional Commits](https://www.conventionalcommits.org/):
+
+1. **Make commits** using conventional commit format:
+   - `feat:` - New features (bumps minor version)
+   - `fix:` - Bug fixes (bumps patch version)
+   - `feat!:` or `BREAKING CHANGE:` - Breaking changes (bumps major version)
+
+2. **Trigger the release workflow**:
+   - Go to GitHub Actions > Release workflow
+   - Click "Run workflow"
+   - Select branch and options
+   - The workflow will automatically:
+     - Determine version bump from commits
+     - Update `package.json` and `CHANGELOG.md`
+     - Create Git tag
+     - Publish to VS Code Marketplace
+     - Create GitHub Release
+
+For detailed documentation, see [Release Workflow Guide](.github/workflows/RELEASE.md).
+
+### Manual Release (Legacy)
+
+If needed, you can still release manually:
+-   `vsce login`
 -   `vsce publish`
--   Updating Changelog via `github_changelog_generator -u andi1984 -p vscode-tinypng -t <token>`
+-   Update changelog: `conventional-changelog -p angular -i CHANGELOG.md -s`
 
 **Enjoy!**
