@@ -1,3 +1,13 @@
+# [1.5.0](https://github.com/andi1984/vscode-tinypng/compare/v1.4.0...v1.5.0) (2025-12-26)
+
+
+### Features
+
+* migrate API key storage to SecretStorage API ([19e1b6c](https://github.com/andi1984/vscode-tinypng/commit/19e1b6ceff0021374544f8433188d64b7e5c6ebf)), closes [#739](https://github.com/andi1984/vscode-tinypng/issues/739)
+* Mocha and TestSuite update ([ad1b684](https://github.com/andi1984/vscode-tinypng/commit/ad1b6848a9917da379121bfd84fb941a737a7d22))
+
+
+
 # [1.4.0](https://github.com/andi1984/vscode-tinypng/compare/1.3.0...1.4.0) (2025-11-22)
 
 
