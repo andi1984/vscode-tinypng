@@ -35,6 +35,11 @@ suite('TinyPNG Extension Test Suite', () => {
         assert.ok(commands.includes('extension.compressGitStage'));
     });
 
+    test('Should register setApiKey command', async () => {
+        const commands = await vscode.commands.getCommands(true);
+        assert.ok(commands.includes('extension.setApiKey'));
+    });
+
     test('Configuration should have apiKey property', () => {
         const config = vscode.workspace.getConfiguration('tinypng');
         assert.ok(config.has('apiKey'));
@@ -134,6 +139,7 @@ suite('TinyPNG Extension Test Suite', () => {
         assert.ok(activationEvents.includes('onCommand:extension.compressFile'));
         assert.ok(activationEvents.includes('onCommand:extension.compressFolder'));
         assert.ok(activationEvents.includes('onCommand:extension.getCompressionCount'));
+        assert.ok(activationEvents.includes('onCommand:extension.setApiKey'));
     });
 
     test('Extension should contribute commands to command palette', () => {
@@ -141,13 +147,14 @@ suite('TinyPNG Extension Test Suite', () => {
         assert.ok(ext);
 
         const commands = ext!.packageJSON.contributes.commands;
-        assert.ok(commands.length >= 4);
+        assert.ok(commands.length >= 5);
 
         const commandTitles = commands.map((cmd: any) => cmd.command);
         assert.ok(commandTitles.includes('extension.compressFile'));
         assert.ok(commandTitles.includes('extension.compressFolder'));
         assert.ok(commandTitles.includes('extension.getCompressionCount'));
         assert.ok(commandTitles.includes('extension.compressGitStage'));
+        assert.ok(commandTitles.includes('extension.setApiKey'));
     });
 
     test('Extension should have explorer context menu contributions', () => {
