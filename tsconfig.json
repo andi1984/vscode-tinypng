@@ -1,12 +1,13 @@
 {
     "compilerOptions": {
-        "module": "commonjs",
+        "module": "Node16",
         "target": "es2019",
         "lib": ["ES2019"],
         "outDir": "out",
         "sourceMap": true,
         "skipLibCheck": true,
-        "moduleResolution": "node",
+        "moduleResolution": "Node16",
+        "esModuleInterop": true,
         /* Strict Type-Checking Option */
         "strict": true /* enable all strict type-checking options */,
         /* Additional Checks */
