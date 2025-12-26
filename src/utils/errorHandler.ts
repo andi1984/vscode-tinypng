@@ -36,7 +36,12 @@ export function handleCompressionError(error: Error): void {
  */
 export function handleValidationError(error: Error): void {
     console.error(error.message);
-    vscode.window.showInformationMessage(
-        'TinyPNG: API validation failed. Be sure that you filled out tinypng.apiKey setting already.'
-    );
+    vscode.window.showErrorMessage(
+        'TinyPNG: API validation failed. Please set your API key using the "TinyPNG: Set API Key" command.',
+        'Set API Key'
+    ).then(selection => {
+        if (selection === 'Set API Key') {
+            vscode.commands.executeCommand('extension.setApiKey');
+        }
+    });
 }

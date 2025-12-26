@@ -18,7 +18,8 @@ suite('Integration Tests', () => {
                 'extension.compressFile',
                 'extension.compressFolder',
                 'extension.getCompressionCount',
-                'extension.compressGitStage'
+                'extension.compressGitStage',
+                'extension.setApiKey'
             ];
 
             extensionCommands.forEach(cmd => {
@@ -152,7 +153,8 @@ suite('Integration Tests', () => {
             const expectedEvents = [
                 'onCommand:extension.compressFile',
                 'onCommand:extension.compressFolder',
-                'onCommand:extension.getCompressionCount'
+                'onCommand:extension.getCompressionCount',
+                'onCommand:extension.setApiKey'
             ];
 
             expectedEvents.forEach(event => {

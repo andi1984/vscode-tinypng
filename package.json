@@ -18,7 +18,8 @@
     "activationEvents": [
         "onCommand:extension.compressFile",
         "onCommand:extension.compressFolder",
-        "onCommand:extension.getCompressionCount"
+        "onCommand:extension.getCompressionCount",
+        "onCommand:extension.setApiKey"
     ],
     "main": "./out/src/extension.js",
     "contributes": {
@@ -28,7 +29,8 @@
                 "properties": {
                     "tinypng.apiKey": {
                         "type": "string",
-                        "description": "Your TinyPNG API Key"
+                        "description": "DEPRECATED: Use Command Palette > 'TinyPNG: Set API Key' instead. Your TinyPNG API Key",
+                        "deprecationMessage": "Please use the Command Palette command 'TinyPNG: Set API Key' to store your key securely."
                     },
                     "tinypng.forceOverwrite": {
                         "type": "boolean",
@@ -70,12 +72,20 @@
                 "command": "extension.compressGitStage",
                 "title": "Compress images in git stage",
                 "category": "TinyPNG"
+            },
+            {
+                "command": "extension.setApiKey",
+                "title": "TinyPNG: Set API Key",
+                "category": "TinyPNG"
             }
         ],
         "menus": {
             "commandPalette": [
                 {
                     "command": "extension.getCompressionCount"
+                },
+                {
+                    "command": "extension.setApiKey"
                 },
                 {
                     "command": "extension.compressFile",

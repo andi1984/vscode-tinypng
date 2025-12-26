@@ -12,10 +12,10 @@ import fs = require('fs');
  */
 export class CompressionService {
     /**
-     * Initialize the TinyPNG API with the API key
+     * Initialize the TinyPNG API with the API key from SecretStorage
      */
-    public static initialize(): void {
-        const apiKey = ConfigService.getApiKey();
+    public static async initialize(context: vscode.ExtensionContext): Promise<void> {
+        const apiKey = await ConfigService.getApiKey(context);
         if (apiKey) {
             tinify.key = apiKey;
         }
